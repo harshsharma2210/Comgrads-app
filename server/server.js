@@ -4,6 +4,8 @@ import express from "express";
 import mongoose from "mongoose";
 import Cards from "./models/dbCards.js";
 import Cors from "cors";
+import cards from "./routes/cards.js";
+import path from "path";
 
 // APP CONFIG
 const app = express();
@@ -30,23 +32,16 @@ db.on("error", (err) => {
 });
 
 // API ENDPOINTS
-app.get("/", (req, res) => {
-  res.status(200).send("Hello Clever Programmer");
-});
+app.use(cards);
 
-app.post("/tinder/cards", (req, res) => {
-  const dbCard = req.body;
-  Cards.create(dbCard, (err, data) => {
-    if (err) res.status(500).send(err);
-    else res.status(201).send(data);
+// HEROKU
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static("client/build"));
+  const path = require("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
-});
-app.get("/tinder/cards", (req, res) => {
-  Cards.find((err, data) => {
-    if (err) res.status(500).send(err);
-    else res.status(200).send(data);
-  });
-});
+}
 
 // LISTERNER
 app.listen(port, () => {
