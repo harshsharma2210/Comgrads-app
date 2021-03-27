@@ -31,7 +31,7 @@ const Login = () => {
       <div className="login__logo">
         <img src={Logo} alt="fb circle" />
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Facebook_Logo_%282019%29.svg/1280px-Facebook_Logo_%282019%29.svg.png"
+          src="https://res.cloudinary.com/dggwrslgs/image/upload/v1616821626/mnexwtdoymj5wlvwsbqd.png"
           alt="fb text"
         />
       </div>
