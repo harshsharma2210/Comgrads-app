@@ -12,6 +12,7 @@ const cardSchema = mongoose.Schema({
   category: String,
   language: String,
   certification: String,
+  url: String,
 });
 
 export default mongoose.model("cards", cardSchema);

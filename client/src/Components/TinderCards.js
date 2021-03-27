@@ -20,8 +20,11 @@ function TinderCards() {
   }, []);
   console.log(people);
 
-  const swiped = (direction, nameToDelete) => {
+  const swiped = (direction, nameToDelete, url) => {
     console.log(`${direction}` + nameToDelete);
+    if (direction === "right") {
+      window.open(url);
+    }
   };
 
   const outOfFrame = (name) => {
@@ -36,7 +39,7 @@ function TinderCards() {
             <TinderCard
               className="swipe"
               preventSwipe={["up", "down"]}
-              onSwipe={(dir) => swiped(dir, person.name)}
+              onSwipe={(dir) => swiped(dir, person.name, person.url)}
               onCardLeftScreen={() => outOfFrame(person.name)}
               key={person._id}
             >

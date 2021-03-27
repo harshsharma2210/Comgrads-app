@@ -48,6 +48,7 @@ function Organiser() {
     description: "",
     duration: "",
     category: "",
+    url: "",
   });
   const handleChange = (e) => {
     if (e.target.files[0]) {
@@ -65,6 +66,7 @@ function Organiser() {
       category: "",
       certification: "",
       language: "",
+      url: "",
     });
     setImage(null);
   };
@@ -89,6 +91,7 @@ function Organiser() {
           category: formData.category,
           certification: formData.certification,
           language: formData.language,
+          url: formData.url,
         });
       })
       .then(() => {
@@ -215,6 +218,18 @@ function Organiser() {
             onChange={(e) =>
               setFormData({ ...formData, description: e.target.value })
             }
+          />
+          <TextField
+            multiline
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="url"
+            label="Course Url"
+            id="url"
+            autoComplete="url"
+            onChange={(e) => setFormData({ ...formData, url: e.target.value })}
           />
           <Input
             type="file"
