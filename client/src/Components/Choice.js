@@ -19,22 +19,26 @@ const Choice = () => {
   };
 
   return (
-    <div className="choice">
-      <Container maxWidth="sm">
-        <Paper className="paper">
-          <Typography variant="h6" align="center">
-            Are you a Student or Event Organiser? Click the button to redirect
-            to the respective page.
+    <Box display="flex" height="100vh" flexDirection="column" justifyContent="center" m={1} p={1} alignContent="flex-end">
+      <Box p={1} >
+        <div className="choice">
+          <Container maxWidth="sm" align="center">
+            <Paper className="paper">
+              <Typography variant="h6" align="center">
+                Are you a Student or Event Organiser? Click the button to redirect
+                to the respective page.
           </Typography>
-          <Button variant="contained" color="primary" onClick={student}>
-            Student
+              <Button variant="contained" color="primary" onClick={student}>
+                Student
           </Button>
-          <Button variant="contained" color="secondary" onClick={organiser}>
-            Organiser
+              <Button variant="contained" color="secondary" onClick={organiser}>
+                Organiser
           </Button>
-        </Paper>
-      </Container>
-    </div>
+            </Paper>
+          </Container>
+        </div>
+      </Box>
+    </Box>
   );
 };
 
