@@ -65,18 +65,19 @@ const Modalbox = ({
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <IconButton>
-          <CloseIcon onClick={closeModal} />
+        <IconButton onClick={closeModal}>
+          <CloseIcon />
         </IconButton>
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>{name}</h2>
-        <h4>{user}</h4>
-        <h4>{price}</h4>
-        <h4>{level}</h4>
-        <h4>{category}</h4>
-        <h4>{duration}</h4>
-        <h4>{certification}</h4>
-        <h4>{language}</h4>
-        <h4>{description}</h4>
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Title: {name}</h2>
+        <h4>Creator: {user ? user : "Not Available"}</h4>
+        <h4>Price: {price}</h4>
+        <h4>Level: {level}</h4>
+        <h4>Category: {category}</h4>
+        <h4>Duration: {duration}</h4>
+        <h4>Cerificate: {certification === "TRUE" ? "Yes" : "No"}</h4>
+        <h4>Language: {language}</h4>
+        <h4>Description: {description}</h4>
+        <h4>Email: {email ? email : "Not Available"}</h4>
       </Modal>
     </div>
   );
