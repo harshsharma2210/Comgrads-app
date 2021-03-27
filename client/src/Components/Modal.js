@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import Info from "@material-ui/icons/Info";
 import IconButton from "@material-ui/core/IconButton";
+import "./Modal.css";
+import CloseIcon from "@material-ui/icons/Close";
 
 const customStyles = {
   content: {
@@ -63,7 +65,9 @@ const Modalbox = ({
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <button onClick={closeModal}>close</button>
+        <IconButton>
+          <CloseIcon onClick={closeModal} />
+        </IconButton>
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>{name}</h2>
         <h4>{user}</h4>
         <h4>{price}</h4>

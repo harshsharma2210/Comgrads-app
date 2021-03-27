@@ -1,7 +1,6 @@
 import "./App.css";
 import Header from "./Components/Header";
 import TinderCards from "./Components/TinderCards";
-import SwipeButtons from "./Components/SwipeButtons";
 import Login from "./Components/Login";
 import { Switch, Route } from "react-router-dom";
 import { useStateValue } from "./StateProvider";
@@ -25,7 +24,6 @@ function App() {
         <Route exact path="/app">
           <Header />
           <TinderCards />
-          <SwipeButtons />
         </Route>
       </Switch>
     </div>

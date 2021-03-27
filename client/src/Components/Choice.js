@@ -1,4 +1,4 @@
-import { Button, Container, Typography, Paper } from "@material-ui/core";
+import { Button, Container, Typography, Paper, Box } from "@material-ui/core";
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { useStateValue } from "../StateProvider";
