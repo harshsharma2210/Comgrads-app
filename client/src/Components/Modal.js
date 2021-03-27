@@ -14,7 +14,21 @@ const customStyles = {
   },
 };
 
-const Modalbox = () => {
+const Modalbox = ({
+  person: {
+    user,
+    email,
+    name,
+    level,
+    price,
+    description,
+    duration,
+    category,
+    certification,
+    language,
+  },
+}) => {
+  console.log(user);
   var subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
   function openModal() {
@@ -35,7 +49,11 @@ const Modalbox = () => {
 
   return (
     <div>
-      <IconButton className="swipeButtons__repeat" id="modal__button" onClick={openModal}>
+      <IconButton
+        className="swipeButtons__repeat"
+        id="modal__button"
+        onClick={openModal}
+      >
         <Info fontSize="large" />
       </IconButton>
       <Modal
@@ -45,16 +63,16 @@ const Modalbox = () => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
         <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-        <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form>
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>{name}</h2>
+        <h4>{user}</h4>
+        <h4>{price}</h4>
+        <h4>{level}</h4>
+        <h4>{category}</h4>
+        <h4>{duration}</h4>
+        <h4>{certification}</h4>
+        <h4>{language}</h4>
+        <h4>{description}</h4>
       </Modal>
     </div>
   );

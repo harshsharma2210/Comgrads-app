@@ -11,6 +11,8 @@ import { useHistory } from "react-router";
 import { useStateValue } from "../StateProvider";
 import axios from "../axios";
 import { Input } from "@material-ui/core";
+import FormData from "form-data";
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -32,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Organiser() {
   const [{ user }, dispatch] = useStateValue();
+  const [image, setImage] = useState(null);
   const history = useHistory();
   if (!user) {
     history.push("/");
@@ -48,7 +51,7 @@ function Organiser() {
   });
   const handleChange = (e) => {
     if (e.target.files[0]) {
-      setFormData({ ...formData, imgUrl: e.target.files[0] });
+      setImage(e.target.files[0]);
     }
   };
   const clear = () => {
@@ -60,33 +63,41 @@ function Organiser() {
       description: "",
       duration: "",
       category: "",
+      certification: "",
+      language: "",
     });
+    setImage(null);
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const data = new FormData();
-    // data.append("file", image);
-    // data.append("upload_preset", "facebook-clone");
-    // data.append("cloud_name", "dggwrslgs");
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "comgrads");
+    data.append("cloud_name", "dggwrslgs");
     axios
-      .post("https://api.cloudinary.com/v1_1/dggwrslgs/image/upload", formData)
+      .post("https://api.cloudinary.com/v1_1/dggwrslgs/image/upload", data)
       .then((data) => {
-        axios.post(`/upload/post`, {
+        axios.post(`/tinder/cards`, {
           user: user.displayName,
           email: user.email,
-          imgName: formData.imgUrl,
-          name: formData.title,
+          imgUrl: data.data.url,
+          name: formData.name,
           level: formData.level,
           price: formData.price,
           description: formData.description,
           duration: formData.duration,
           category: formData.category,
+          certification: formData.certification,
+          language: formData.language,
         });
+      })
+      .then(() => {
+        clear();
+        history.push("/choice");
       })
       .catch((err) => {
         console.log(err);
       });
-    clear();
   };
 
   return (
@@ -110,9 +121,7 @@ function Organiser() {
             name="title"
             autoComplete="title"
             autoFocus
-            onChange={(e) =>
-              setFormData({ ...formData, title: e.target.value })
-            }
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           />
           <TextField
             variant="outlined"
@@ -124,7 +133,7 @@ function Organiser() {
             id="price"
             autoComplete="price"
             onChange={(e) =>
-              setFormData({ ...formData, title: e.target.value })
+              setFormData({ ...formData, price: e.target.value })
             }
           />
           <TextField
@@ -137,7 +146,7 @@ function Organiser() {
             id="duration"
             autoComplete="duration"
             onChange={(e) =>
-              setFormData({ ...formData, title: e.target.value })
+              setFormData({ ...formData, duration: e.target.value })
             }
           />
           <TextField
@@ -150,7 +159,46 @@ function Organiser() {
             id="level"
             autoComplete="level"
             onChange={(e) =>
-              setFormData({ ...formData, title: e.target.value })
+              setFormData({ ...formData, level: e.target.value })
+            }
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="certification"
+            label="Certification"
+            id="certification"
+            autoComplete="certification"
+            onChange={(e) =>
+              setFormData({ ...formData, certification: e.target.value })
+            }
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="category"
+            label="Category"
+            id="category"
+            autoComplete="category"
+            onChange={(e) =>
+              setFormData({ ...formData, category: e.target.value })
+            }
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="language"
+            label="Language"
+            id="language"
+            autoComplete="language"
+            onChange={(e) =>
+              setFormData({ ...formData, language: e.target.value })
             }
           />
           <TextField
@@ -165,7 +213,7 @@ function Organiser() {
             id="description"
             autoComplete="description"
             onChange={(e) =>
-              setFormData({ ...formData, title: e.target.value })
+              setFormData({ ...formData, description: e.target.value })
             }
           />
           <Input

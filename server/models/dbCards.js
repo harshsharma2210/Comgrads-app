@@ -10,6 +10,8 @@ const cardSchema = mongoose.Schema({
   description: String,
   duration: String,
   category: String,
+  language: String,
+  certification: String,
 });
 
 export default mongoose.model("cards", cardSchema);
