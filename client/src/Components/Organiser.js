@@ -14,7 +14,6 @@ import { Input } from "@material-ui/core";
 import FormData from "form-data";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
@@ -225,7 +224,7 @@ function Organiser() {
               <MenuItem value="Painting">Painting</MenuItem>
               <MenuItem value="Singing">Singing</MenuItem>
               <MenuItem value="Music">Music Theory</MenuItem>
-              <MenuItem value="Literay">Literay</MenuItem>
+              <MenuItem value="Literary">Literary</MenuItem>
               <MenuItem value="Photography">Photography</MenuItem>
             </Select>
           </FormControl>

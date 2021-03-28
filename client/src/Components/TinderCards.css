@@ -69,3 +69,8 @@
   padding: 3vw !important;
   color: #915dd1 !important;
 }
+.MuiFormControl-root {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

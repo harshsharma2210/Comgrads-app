@@ -1,10 +1,9 @@
 import React from "react";
 import "./Header.css";
-import IconButton from "@material-ui/core/IconButton";
-import ForumIcon from "@material-ui/icons/Forum";
+import Person from "@material-ui/icons/PersonOutline";
 import Logo from "../images/logo.png";
 import { useStateValue } from "../StateProvider";
-import { Avatar } from "@material-ui/core";
+import { Avatar, IconButton } from "@material-ui/core";
 import { useHistory } from "react-router";
 
 function Header() {
@@ -26,8 +25,10 @@ function Header() {
       >
         <img className="header__logo" src={Logo} alt="logo" />
       </IconButton>
-      <IconButton>
-        <ForumIcon fontSize="large" className="header__icon" />
+      <IconButton onClick={() =>
+          window.location.replace("http://230e4ee7c007.ngrok.io/")
+        }>
+        <Person fontSize="large" className="header__icon" />
       </IconButton>
     </div>
   );

@@ -30,7 +30,6 @@ const Modalbox = ({
     language,
   },
 }) => {
-  console.log(user);
   var subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
   function openModal() {
