@@ -12,6 +12,11 @@ import { useStateValue } from "../StateProvider";
 import axios from "../axios";
 import { Input } from "@material-ui/core";
 import FormData from "form-data";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -31,6 +36,13 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
 }));
 function Organiser() {
   const [{ user }, dispatch] = useStateValue();
@@ -39,6 +51,7 @@ function Organiser() {
   if (!user) {
     history.push("/");
   }
+  const [courses, setCourses] = React.useState("");
   const classes = useStyles();
   const [formData, setFormData] = useState({
     name: "",
@@ -88,7 +101,7 @@ function Organiser() {
           price: formData.price,
           description: formData.description,
           duration: formData.duration,
-          category: formData.category,
+          category: courses,
           certification: formData.certification,
           language: formData.language,
           url: formData.url,
@@ -178,7 +191,7 @@ function Organiser() {
               setFormData({ ...formData, certification: e.target.value })
             }
           />
-          <TextField
+          {/* <TextField
             variant="outlined"
             margin="normal"
             required
@@ -190,7 +203,32 @@ function Organiser() {
             onChange={(e) =>
               setFormData({ ...formData, category: e.target.value })
             }
-          />
+          /> */}
+          <FormControl className={classes.formControl}>
+            <InputLabel id="demo-simple-select-label">Courses</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={courses}
+              onChange={(e) => setCourses(e.target.value)}
+            >
+              <MenuItem value="Python">Python</MenuItem>
+              <MenuItem value="C++">C++</MenuItem>
+              <MenuItem value="Java">Java</MenuItem>
+              <MenuItem value="Web Development">Web Development</MenuItem>
+              <MenuItem value="App Development">App Development</MenuItem>
+              <MenuItem value="Game Development">Game Development</MenuItem>
+              <MenuItem value="Graphic Designing">Graphic Designing</MenuItem>
+              <MenuItem value="Data Structures and Algorithm">
+                Data Structures and Algorithm
+              </MenuItem>
+              <MenuItem value="Painting">Painting</MenuItem>
+              <MenuItem value="Singing">Singing</MenuItem>
+              <MenuItem value="Music">Music Theory</MenuItem>
+              <MenuItem value="Literay">Literay</MenuItem>
+              <MenuItem value="Photography">Photography</MenuItem>
+            </Select>
+          </FormControl>
           <TextField
             variant="outlined"
             margin="normal"
