@@ -20,14 +20,16 @@ function Header() {
       </div>
       <IconButton
         onClick={() =>
-          window.location.replace("https://kkanoo.github.io/Comgrads/")
+          window.location.replace(
+            "https://github.com/kkanoo/Comgrads_Resources"
+          )
         }
       >
         <img className="header__logo" src={Logo} alt="logo" />
       </IconButton>
-      <IconButton onClick={() =>
-          window.location.replace("http://230e4ee7c007.ngrok.io/")
-        }>
+      <IconButton
+        onClick={() => window.location.replace("http://c286dc68361a.ngrok.io/")}
+      >
         <Person fontSize="large" className="header__icon" />
       </IconButton>
     </div>
